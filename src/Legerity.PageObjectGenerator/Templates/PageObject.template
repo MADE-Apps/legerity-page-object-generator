@@ -1,0 +1,41 @@
+using System;
+using System.Threading;
+
+using Legerity;
+using Legerity.Pages;
+{{- if string.contains platform "Android" }}
+using Legerity.Android.Elements.Core;
+{{- else if string.contains platform "iOS" }}
+using Legerity.IOS.Elements.Core;
+{{- else if string.contains platform "Windows" }}
+using Legerity.Windows.Elements.Core;
+using Legerity.Windows.Extensions;
+{{- end}}
+
+using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.{{platform}};
+{{- if string.contains platform "Android" }}
+using OpenQA.Selenium.Appium.Android.UiAutomator;
+{{- end}}
+using OpenQA.Selenium.Remote;
+
+namespace Legerity.Tests.Pages
+{
+    /// <summary>
+    /// Defines a Legerity page object that represents the application's {{page}}.
+    /// </summary>
+    public class {{page}} : BasePage
+    {
+        /// <summary>
+        /// Gets a given trait of the page to verify that the page is in view.
+        /// </summary>
+        protected override By Trait => {{- if string.contains trait.by "Name"}} By.Name("{{trait.value}}"); {{- else if string.contains trait.by "AutomationId"}} ByExtensions.AutomationId("{{trait.value}}"); {{- else if string.contains trait.by "Id"}} By.Id("{{trait.value}}"); {{- end}}
+        {{~ for element in elements }}
+        /// <summary>
+        /// Gets the {{element.type}} that represents the {{element.name}} UI element of the page.
+        /// </summary>
+        public {{element.type}} {{element.name}} => App.FindElement({{- if string.contains element.by "Name"}}By.Name("{{element.value}}") {{- else if string.contains element.by "AutomationId"}}ByExtensions.AutomationId("{{element.value}}") {{- else if string.contains element.by "Id"}}By.Id("{{element.value}}") {{- else if string.contains element.by "AndroidContentDesc"}}new ByAndroidUIAutomator(new AndroidUiSelector().DescriptionEquals("{{element.value}}")) {{- end}}) as {{type}};
+        {{~ end ~}}
+    }
+}

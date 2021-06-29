@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="MADE.Collections" Version="1.2.0" />
+    <PackageReference Include="MADE.Data.Validation" Version="1.2.0" />
+    <PackageReference Include="Scriban" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\PageObject.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
