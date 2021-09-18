@@ -14,7 +14,7 @@ As many developers know, projects like Legerity are built and maintained in spar
 
 | Build | Status |
 | ------ | ------ |
-| Page Object Generator [![CI](https://github.com/MADE-Apps/legerity-page-object-generator/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity-page-object-generator/actions/workflows/ci.yml) |
+| Page Object Generator | [![CI](https://github.com/MADE-Apps/legerity-page-object-generator/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/legerity-page-object-generator/actions/workflows/ci.yml) |
 
 ## Installation 💾
 
